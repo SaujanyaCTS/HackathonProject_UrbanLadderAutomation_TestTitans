@@ -24,14 +24,14 @@
 	</test>
 
 	<!-- ========== EDGE TESTS ========== -->
-	<!--    <test name="Edge Tests">-->
-	<!--        <parameter name="browser" value="edge" />-->
-	<!--        <classes>-->
-	<!--            <class name="com.hackathonproject.tests.BookshelvesTest" />-->
-	<!--            <class name="com.hackathonproject.tests.CollectionsTest" />-->
-	<!--            <class name="com.hackathonproject.tests.GiftCardTest" />-->
-	<!--        </classes>-->
-	<!--    </test>-->
+<!--	    <test name="Edge Tests">-->
+<!--	        <parameter name="browser" value="edge" />-->
+<!--	        <classes>-->
+<!--	            <class name="com.hackathonproject.tests.BookshelvesTest" />-->
+<!--	            <class name="com.hackathonproject.tests.CollectionsTest" />-->
+<!--	            <class name="com.hackathonproject.tests.GiftCardTest" />-->
+<!--	        </classes>-->
+<!--	    </test>-->
 
 
 <!--	<test name="Firefox Tests">-->
