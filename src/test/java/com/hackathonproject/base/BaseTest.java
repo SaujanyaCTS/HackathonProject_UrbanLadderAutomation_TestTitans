@@ -40,8 +40,8 @@ public class BaseTest {
 			case "edge":
 				System.setProperty("webdriver.edge.driver", ConfigReader.getEdgeDriverPath());
 				EdgeOptions edgeOptions = new EdgeOptions();
-				//edgeOptions.addArguments("--window-size=1280,800");
-				//edgeOptions.addArguments("--window-position=1280,0");
+				edgeOptions.addArguments("--window-size=1280,800");
+				edgeOptions.addArguments("--window-position=1280,0");
 				edgeOptions.addArguments("--disable-notifications");
 				edgeOptions.addArguments("--disable-popup-blocking");
 				driver = new EdgeDriver(edgeOptions);
