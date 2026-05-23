@@ -6,45 +6,53 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-   
+    <!-- ===== Project Coordinates ===== -->
     <groupId>com.hackathonproject</groupId>
     <artifactId>HackathonProject_UrbanLadderAutomation_TestTitans</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-
+    <!-- ===== Properties ===== -->
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <!-- Dependency Versions -->
         <selenium.version>4.18.1</selenium.version>
         <testng.version>7.9.0</testng.version>
+        <webdrivermanager.version>5.7.0</webdrivermanager.version>
         <apache.poi.version>5.2.5</apache.poi.version>
         <extentreports.version>5.1.1</extentreports.version>
         <allure.version>2.25.0</allure.version>
         <log4j.version>2.23.0</log4j.version>
     </properties>
 
-
+    <!-- ===== Dependencies ===== -->
     <dependencies>
 
-      
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
 
-      
-        
+        <!-- WebDriverManager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
 
-    
+        <!-- Apache POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -56,21 +64,21 @@
             <version>${apache.poi.version}</version>
         </dependency>
 
-  
+        <!-- Extent Reports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>${extentreports.version}</version>
         </dependency>
 
-      
+        <!-- Allure -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
         </dependency>
 
-      
+        <!-- Log4j -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -82,6 +90,7 @@
             <version>${log4j.version}</version>
         </dependency>
 
+        <!-- Commons IO -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -90,11 +99,11 @@
 
     </dependencies>
 
-  
+    <!-- ===== Build Plugins ===== -->
     <build>
         <plugins>
 
-           
+            <!-- Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -105,19 +114,15 @@
                 </configuration>
             </plugin>
 
-       
+            <!-- Surefire (TestNG execution) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <parallel>classes</parallel>
-                    <threadCount>3</threadCount>
-
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-
                     <systemPropertyVariables>
                         <allure.results.directory>
                             ${project.basedir}/allure-results
@@ -126,7 +131,7 @@
                 </configuration>
             </plugin>
 
-            
+            <!-- Allure Report Plugin -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
