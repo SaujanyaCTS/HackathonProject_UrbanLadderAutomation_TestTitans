@@ -411,7 +411,7 @@ Log levels used:
 
 ## Team
 
-**Team Name:** Test Titans — POD2
+**Team Name:** Test Titans 
 
 **Project:** Urban Ladder Test Automation Hackathon
 

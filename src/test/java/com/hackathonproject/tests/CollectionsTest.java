@@ -2,6 +2,7 @@ package com.hackathonproject.tests;
 
 import com.aventstack.extentreports.Status;
 import com.hackathonproject.base.BaseTest;
+import com.hackathonproject.keywords.KeywordEngine;
 import com.hackathonproject.pages.CollectionsPage;
 import com.hackathonproject.utils.ExtentReportManager;
 import com.hackathonproject.utils.ScreenshotUtil;
@@ -23,22 +24,29 @@ public class CollectionsTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         log.info("========== FLOW 2: COLLECTIONS NAVIGATION TEST ==========");
 
+        // Keyword-Driven Execution — reads steps from Keywords.xlsx
+        KeywordEngine engine = new KeywordEngine(getDriver());
+        engine.executeTestCase("CollectionsTest");
+
         CollectionsPage collectionsPage = new CollectionsPage(getDriver());
 
         // Step 1: Click New Arrivals
-        log.info("Step 1: Clicking New Arrivals...");
-        collectionsPage.clickNewArrivals();
-        ExtentReportManager.getTest().log(Status.INFO, "Clicked New Arrivals.");
+        // (Already done by KeywordEngine — commented to avoid double navigation)
+//        log.info("Step 1: Clicking New Arrivals...");
+//        collectionsPage.clickNewArrivals();
+//        ExtentReportManager.getTest().log(Status.INFO, "Clicked New Arrivals.");
 
 //        // Step 2: Click Oasis Collection
+//        // (Already done by KeywordEngine — commented to avoid double navigation)
 //        log.info("Step 2: Clicking Oasis Collection...");
 //        collectionsPage.clickOasisCollection();
 //        ExtentReportManager.getTest().log(Status.INFO, "Clicked Oasis Collection.");
 
         // Step 3: Click Living Room
-        log.info("Step 3: Clicking Living Room...");
-        collectionsPage.clickLivingRoom();
-        ExtentReportManager.getTest().log(Status.INFO, "Clicked Living Room.");
+        // (Already done by KeywordEngine — commented to avoid double navigation)
+//        log.info("Step 3: Clicking Living Room...");
+//        collectionsPage.clickLivingRoom();
+//        ExtentReportManager.getTest().log(Status.INFO, "Clicked Living Room.");
 
         // Step 4: Verify breadcrumb confirms we are on the right page
         String breadcrumb = collectionsPage.getBreadcrumbText();
@@ -47,9 +55,10 @@ public class CollectionsTest extends BaseTest {
         softAssert.assertFalse(breadcrumb.isEmpty(), "Breadcrumb is empty — page may not have loaded correctly.");
 
         // Step 5: Apply Solid Wood filter
-        log.info("Step 4: Applying Solid Wood filter...");
-        collectionsPage.applySolidWoodFilter();
-        ExtentReportManager.getTest().log(Status.INFO, "Applied Solid Wood filter.");
+        // (Already done by KeywordEngine — commented to avoid double filter click)
+//        log.info("Step 4: Applying Solid Wood filter...");
+//        collectionsPage.applySolidWoodFilter();
+//        ExtentReportManager.getTest().log(Status.INFO, "Applied Solid Wood filter.");
 
         // Step 6: Capture all product names into ArrayList
         log.info("Step 5: Capturing product names...");

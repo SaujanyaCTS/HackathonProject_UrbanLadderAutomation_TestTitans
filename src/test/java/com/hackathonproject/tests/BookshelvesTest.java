@@ -2,6 +2,7 @@ package com.hackathonproject.tests;
 
 import com.aventstack.extentreports.Status;
 import com.hackathonproject.base.BaseTest;
+import com.hackathonproject.keywords.KeywordEngine;
 import com.hackathonproject.pages.BookshelvesPage;
 import com.hackathonproject.utils.ExtentReportManager;
 import com.hackathonproject.utils.ScreenshotUtil;
@@ -23,17 +24,23 @@ public class BookshelvesTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         log.info("========== FLOW 1: BOOKSHELVES FILTER TEST ==========");
 
+        // Keyword-Driven Execution — reads steps from Keywords.xlsx
+        KeywordEngine engine = new KeywordEngine(getDriver());
+        engine.executeTestCase("BookshelvesTest");
+
         BookshelvesPage bookshelvesPage = new BookshelvesPage(getDriver());
 
         // Step 1: Go to Bookshelves page
-        log.info("Step 1: Navigating to Bookshelves page...");
-        bookshelvesPage.navigateToBookshelvesPage();
-        ExtentReportManager.getTest().log(Status.INFO, "Navigated to Bookshelves page.");
+        // (Already done by KeywordEngine — commented to avoid double navigation)
+//        log.info("Step 1: Navigating to Bookshelves page...");
+//        bookshelvesPage.navigateToBookshelvesPage();
+//        ExtentReportManager.getTest().log(Status.INFO, "Navigated to Bookshelves page.");
 
         // Step 2: Apply Open Storage filter
-        log.info("Step 2: Applying Open Storage filter...");
-        bookshelvesPage.applyStorageTypeOpen();
-        ExtentReportManager.getTest().log(Status.INFO, "Applied Open Storage filter.");
+        // (Already done by KeywordEngine — commented to avoid double filter click)
+//        log.info("Step 2: Applying Open Storage filter...");
+//        bookshelvesPage.applyStorageTypeOpen();
+//        ExtentReportManager.getTest().log(Status.INFO, "Applied Open Storage filter.");
 
         // Step 3: Capture top 3 products
         log.info("Step 3: Capturing top 3 products...");
@@ -67,8 +74,6 @@ public class BookshelvesTest extends BaseTest {
             softAssert.assertTrue(price > 0,
                     "Price of '" + name + "' could not be extracted (returned 0).");
 
-            // Price limit check — log as known bug if above 15000
-            // Website does not enforce price_range filter on live site
             if (price >= 15000) {
                 System.out.println("KNOWN BUG: '" + name + "' costs Rs." + price
                         + " — price filter not enforced by urbanladder.com.");
