@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -49,8 +50,10 @@ public class BookshelvesPage {
 
             // Click "Open Storage" inside dropdown-menu-storage-type
             WebElement openOption = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//div[@id='dropdown-menu-storage-type']//*[contains(text(),'Open Storage')]")));
-            js.executeScript("arguments[0].click();", openOption);
+                By.xpath("//div[@id='dropdown-menu-storage-type']")));
+            //js.executeScript("arguments[0].click();", openOption);
+            Select select=new Select(openOption);
+            select.selectByValue("Open Storage");
             System.out.println("Selected Open Storage.");
             safeSleep(3000);
 

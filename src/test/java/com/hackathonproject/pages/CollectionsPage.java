@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -105,8 +106,10 @@ public class CollectionsPage {
 
             // Click "Solid Wood" inside dropdown-menu-primary-material
             WebElement solidWoodOption = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//div[@id='dropdown-menu-primary-material']//*[contains(text(),'Solid Wood')]")));
-            js.executeScript("arguments[0].click();", solidWoodOption);
+                By.xpath("//div[@id='dropdown-menu-primary-material']")));
+            //js.executeScript("arguments[0].click();", solidWoodOption);
+            Select select=new Select(solidWoodOption);
+            select.selectByValue("Solid Wood");
             System.out.println("Selected Solid Wood.");
             safeSleep(3000);
 
